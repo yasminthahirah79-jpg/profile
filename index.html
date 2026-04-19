@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Yasmin Thahirah | Leopard Aesthetic Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background 0.3s, color 0.3s;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* BACKGROUND KULIT MACAN */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(210, 150, 100, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 70% 80%, rgba(180, 120, 70, 0.12) 3px, transparent 3px),
+                radial-gradient(circle at 45% 55%, rgba(200, 140, 90, 0.1) 4px, transparent 4px),
+                radial-gradient(circle at 85% 15%, rgba(190, 130, 80, 0.13) 2.5px, transparent 2.5px),
+                radial-gradient(circle at 10% 90%, rgba(170, 110, 60, 0.11) 3.5px, transparent 3.5px);
+            background-size: 60px 60px, 80px 80px, 100px 100px, 70px 70px, 90px 90px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #1a0f0a 0%, #2c1810 50%, #3e2723 100%);
+            color: #f5e6d3;
+        }
+
+        body.light {
+            background: linear-gradient(135deg, #faf0e6 0%, #f5e6d3 50%, #e8d5c4 100%);
+            color: #3e1f1a;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #b87c4f; border-radius: 10px; }
+
+        /* NAVBAR */
+        .top-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 20, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            padding: 8px 20px;
+            display: flex;
+            gap: 6px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(210, 180, 140, 0.3);
+            max-width: 95%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        body.light .top-nav {
+            background: rgba(245, 230, 211, 0.95);
+            border: 1px solid rgba(141, 110, 99, 0.3);
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        body.dark .nav-item { color: #e8d5c4; }
+        body.light .nav-item { color: #3e1f1a; }
+        .nav-item:hover, .nav-item.active {
+            background: #b87c4f;
+            color: #f5e6d3;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 700px) {
+            .top-nav {
+                width: 90%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 8px 12px;
+                gap: 4px;
+                border-radius: 40px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 1.8rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        section {
+            padding: 2rem 0 3rem;
+            scroll-margin-top: 100px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        body.dark .section-title {
+            background: linear-gradient(135deg, #e8c4a0, #c49a6c, #b87c4f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.light .section-title {
+            background: linear-gradient(135deg, #8b5a3c, #6b3f2a, #5a3220);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 1rem 0 2rem;
+        }
+        .profile-wrapper { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+        .profile-photo {
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+            border: 4px solid #b87c4f;
+            box-shadow: 0 0 0 4px rgba(184, 124, 79, 0.3), 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .profile-photo:hover { transform: scale(1.02); }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(184, 124, 79, 0.25);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        body.dark .hero-badge { color: #e8c4a0; }
+        body.light .hero-badge { color: #5a3220; }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        body.dark .hero h1 {
+            background: linear-gradient(135deg, #f5e6d3, #e8c4a0, #c49a6c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.light .hero h1 {
+            background: linear-gradient(135deg, #8b5a3c, #6b3f2a, #5a3220);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-tagline {
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 1rem auto;
+        }
+        body.dark .hero-tagline { color: #e8c4a0; }
+        body.light .hero-tagline { color: #6b3f2a; }
+
+        /* GLASS CARD */
+        .glass-card {
+            background: rgba(30, 20, 15, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.6rem;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+        body.light .glass-card {
+            background: rgba(245, 230, 211, 0.85);
+            border: 1px solid rgba(141, 110, 99, 0.3);
+        }
+        .about-grid { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .about-text { flex: 2; line-height: 1.6; }
+        .about-info {
+            flex: 1;
+            background: rgba(184, 124, 79, 0.15);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .skill-card-modern {
+            background: rgba(30, 20, 15, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+        body.light .skill-card-modern {
+            background: rgba(245, 230, 211, 0.85);
+        }
+        .skill-card-modern:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(184, 124, 79, 0.3);
+            border-color: #c49a6c;
+        }
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        body.dark .skill-icon {
+            background: linear-gradient(135deg, #e8c4a0, #c49a6c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.light .skill-icon {
+            background: linear-gradient(135deg, #8b5a3c, #6b3f2a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .skill-name { font-weight: 700; font-size: 1rem; }
+        body.dark .skill-name { color: #f5e6d3; }
+        body.light .skill-name { color: #3e1f1a; }
+
+        /* FAVORITES */
+        .hobbies-flex {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hobby-bubble {
+            flex: 1;
+            background: rgba(30, 20, 15, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid rgba(210, 180, 140, 0.4);
+            cursor: pointer;
+        }
+        body.light .hobby-bubble {
+            background: rgba(245, 230, 211, 0.8);
+        }
+        .hobby-bubble:hover {
+            transform: translateY(-5px);
+            background: rgba(184, 124, 79, 0.3);
+            border-color: #c49a6c;
+        }
+        .hobby-bubble i {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        body.dark .hobby-bubble i {
+            background: linear-gradient(135deg, #e8c4a0, #c49a6c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        body.light .hobby-bubble i {
+            background: linear-gradient(135deg, #8b5a3c, #6b3f2a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* PINTEREST */
+        .pinterest-three-columns {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .pinterest-col {
+            flex: 1;
+            min-width: 180px;
+            background: rgba(30, 20, 15, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+        body.light .pinterest-col {
+            background: rgba(245, 230, 211, 0.8);
+        }
+        .pinterest-col:hover {
+            transform: translateY(-5px);
+            border-color: #c49a6c;
+        }
+        .col-header {
+            text-align: center;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(210, 180, 140, 0.4);
+        }
+        .col-header i {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+        .single-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+        .single-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(184, 124, 79, 0.3);
+            border-color: #c49a6c;
+        }
+        .view-more-col {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.7rem;
+        }
+
+        /* PROJECT */
+        .project-card {
+            background: rgba(30, 20, 15, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(210, 180, 140, 0.4);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 35px -12px rgba(184, 124, 79, 0.4);
+        }
+        .project-img {
+            height: 180px;
+            background: linear-gradient(135deg, #4e342e, #3e2723);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .project-img i { font-size: 3.8rem; color: #e8c4a0; }
+        .project-info { padding: 1.5rem; }
+        .project-title { font-size: 1.6rem; font-weight: 700; }
+
+        /* CONTACT */
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .contact-bubble {
+            background: rgba(30, 20, 15, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border: 1px solid rgba(210, 180, 140, 0.4);
+        }
+        body.dark .contact-bubble { color: #f5e6d3; }
+        body.light .contact-bubble { 
+            background: rgba(245, 230, 211, 0.9);
+            color: #3e1f1a;
+        }
+        .contact-bubble i { font-size: 1.2rem; color: #e8c4a0; }
+        .contact-bubble:hover {
+            transform: translateY(-3px);
+            background: #b87c4f;
+            color: white;
+        }
+
+        /* CONTROLS */
+        .controls-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .pill-btn {
+            background: rgba(30, 20, 15, 0.6);
+            backdrop-filter: blur(8px);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-family: inherit;
+        }
+        .pill-btn:hover { background: #b87c4f; color: white; transform: scale(1.02); }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 750px) {
+            .main-container { padding: 5rem 1.2rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .pinterest-three-columns { flex-direction: column; }
+            .hobbies-flex { flex-direction: column; }
+        }
+
+        /* MODAL UMUM */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #3e2723, #2c1810);
+            border-radius: 2rem;
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(210, 180, 140, 0.4);
+        }
+        body.light .modal-content {
+            background: linear-gradient(135deg, #f5e6d3, #e8d5c4);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        body.dark .modal-close { color: #e8c4a0; }
+        body.light .modal-close { color: #6b3f2a; }
+
+        /* GRID UNTUK RESEP & PRODUK */
+        .recipe-grid, .makeup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .recipe-card, .product-card {
+            background: rgba(30, 20, 15, 0.5);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .recipe-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(184, 124, 79, 0.3);
+        }
+        .recipe-img, .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .recipe-card p, .product-card p {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* LIGHTBOX UNTUK MEMPERBESAR GAMBAR */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            color: #b87c4f;
+        }
+    </style>
+</head>
+<body class="dark">
+    <nav class="top-nav">
+        <button class="nav-item" id="nav-home"><i class="fas fa-home"></i><span>Home</span></button>
+        <button class="nav-item" id="nav-about"><i class="fas fa-user"></i><span>Tentang</span></button>
+        <button class="nav-item" id="nav-skills"><i class="fas fa-bolt"></i><span>Keahlian</span></button>
+        <button class="nav-item" id="nav-favorites"><i class="fas fa-heart"></i><span>Favorit</span></button>
+        <button class="nav-item" id="nav-projects"><i class="fas fa-rocket"></i><span>Proyek</span></button>
+        <button class="nav-item" id="nav-contact"><i class="fas fa-envelope"></i><span>Kontak</span></button>
+    </nav>
+
+    <div class="main-container">
+        <div class="controls-bar">
+            <button class="pill-btn" id="themeToggleBtn"><i class="fas fa-moon"></i> <span id="themeLabel">Light</span></button>
+            <button class="pill-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langLabel">EN</span></button>
+        </div>
+
+        <!-- HOME -->
+        <section id="home">
+            <div class="hero">
+                <div class="profile-wrapper"><img class="profile-photo" id="profileImage" src="sekar.jpg" alt="Yasmin"></div>
+                <div class="hero-badge" data-i18n="hero_badge"> Mahasiswi Teknik Informatika</div>
+                <h1>Yasmin Thahirah</h1>
+                <div class="hero-tagline" data-i18n="hero_tagline">Memadukan teknologi dan kreativitas</div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <h2 class="section-title" data-i18n="about_title">🌸Tentang Saya</h2>
+            <div class="glass-card">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p data-i18n="about_text1">Halo, saya Yasmin Thahirah. Saya suka mengeksplor hal-hal seputar makeup, memasak, desain, dan dunia digital. Di web ini saya berbagi berbagai inspirasi dari Pinterest moodboard, mulai dari ide makeup, outfit, sampai resep makanan, serta berbagai link produk yang saya gunakan atau saya sukai.</p>
+                        <p style="margin-top: 1rem;" data-i18n="about_text2">Saya adalah mahasiswi Teknik Informatika di Universitas Jabal Ghafur, Pidie, Aceh. Saya sedang belajar dan mengembangkan keterampilan di bidang teknologi, khususnya web dan desain, sambil tetap menyalurkan hobi saya di dunia memasak. Di sini juga saya menampilkan beberapa project yang saya kerjakan sebagai bentuk latihan dan pengembangan diri. Web ini menjadi tempat saya menuangkan ide, inspirasi, dan hasil karya saya.</p>
+                        <p style="margin-top: 1rem;" data-i18n="about_location">📍 Aceh, Indonesia</p>
+                    </div>
+                    <div class="about-info">
+                        <p><i class="fas fa-graduation-cap" style="color:#b87c4f;"></i> <strong> Perjalanan Pendidikan</strong></p>
+                        <div style="margin-left: 0.5rem; margin-top: 0.5rem;">
+                            <div style="margin-bottom: 0.6rem;">📘 <strong>SDU Iqro' Sigli</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2012 - 2018</span></div>
+                            <div style="margin-bottom: 0.6rem;">📘 <strong>SMPU Iqro' Sigli</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2018 - 2021</span></div>
+                            <div style="margin-bottom: 0.6rem;">📘 <strong>SMA DAR MARYAM Samahani</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2021 - 2024</span></div>
+                            <div>📘 <strong>Universitas Jabal Ghafur (UNIGHA)</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2024 - sekarang</span><br><span style="font-size: 0.65rem; opacity: 0.7;">Mahasiswi Teknik Informatika</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills-section">
+            <h2 class="section-title"><i class="fas fa-bolt"></i> <span data-i18n="skills_title">My Expertise</span></h2>
+            <div class="skills-grid" id="skillsContainer"></div>
+        </section>
+
+        <!-- FAVORIT -->
+        <section id="favorites-section">
+            <h2 class="section-title" data-i18n="favorites_title">❤️ My Favorites</h2>
+            <div class="hobbies-flex">
+                <div class="hobby-bubble" id="cookingBtn">
+                    <i class="fas fa-utensils"></i>
+                    <h3>🍳 <span data-i18n="hobby_cook">Memasak</span></h3>
+                    <p data-i18n="hobby_cook_desc">Klik untuk lihat resep</p>
+                </div>
+                <div class="hobby-bubble" id="makeupBtn">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>💄 <span data-i18n="hobby_makeup">Makeup</span></h3>
+                    <p data-i18n="hobby_makeup_desc">Klik untuk lihat produk</p>
+                </div>
+            </div>
+        </section>
+        <!-- PINTEREST -->
+        <section id="pinterest-section">
+            <h2 class="section-title" data-i18n="pinterest_title">🎨 Pinterest Inspo</h2>
+            <div class="pinterest-three-columns">
+                <div class="pinterest-col">
+                    <div class="col-header"><i class="fas fa-tshirt"></i><h3 data-i18n="outfit_title">Outfit Ideas</h3></div>
+                    <img class="single-image" id="outfitImage" src="outfit.jpg" alt="Outfit" onclick="window.open('https://pin.it/4JPM089vg', '_blank')">
+                    <div class="view-more-col"><a href="https://pin.it/4JPM089vg" target="_blank" data-i18n="view_more">Lihat semua →</a></div>
+                </div>
+                <div class="pinterest-col">
+                    <div class="col-header"><i class="fas fa-paint-brush"></i><h3 data-i18n="makeup_title">Makeup</h3></div>
+                    <img class="single-image" id="makeupImage" src="meap.jpg" alt="Makeup" onclick="window.open('https://pin.it/4JPM089vg', '_blank')">
+                    <div class="view-more-col"><a href="https://pin.it/4JPM089vg" target="_blank" data-i18n="view_more">Lihat semua →</a></div>
+                </div>
+                <div class="pinterest-col">
+                    <div class="col-header"><i class="fas fa-utensils"></i><h3 data-i18n="foodie_title">Foodie</h3></div>
+                    <img class="single-image" id="foodieImage" src="food.jpg" alt="Foodie" onclick="window.open('https://pin.it/4JPM089vg', '_blank')">
+                    <div class="view-more-col"><a href="https://pin.it/4JPM089vg" target="_blank" data-i18n="view_more">Lihat semua →</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects-section">
+            <h2 class="section-title" data-i18n="projects_title">🚀 Proyek Saya</h2>
+            <div id="projectCardWrapper" style="max-width: 700px; margin: 0 auto;"></div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact-section">
+            <h2 class="section-title" data-i18n="contact_title">📞 Hubungi Saya</h2>
+            <div class="contact-links">
+                <a href="https://www.instagram.com/yasminthrh" target="_blank" class="contact-bubble"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/6282268415784" target="_blank" class="contact-bubble"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:yasminthahirah79@gmail.com" class="contact-bubble"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </section>
+        <footer><p>© 2026 Yasmin Thahirah  <span data-i18n="footer"></p></footer>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content" id="modalContent">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div id="modalInner"></div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX UNTUK MEMPERBESAR GAMBAR -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" src="" alt="Preview">
+    </div>
+
+    <script>
+        // MULTI LANGUAGE
+        const translations = {
+            id: {
+                hero_badge: "🌸 Mahasiswi Teknik Informatika",
+                hero_tagline: "Memadukan teknologi dan kreativitas.",
+                about_title: "🌸 Tentang Saya",
+                about_text1: "Halo, saya Yasmin Thahirah. Saya suka mengeksplor hal-hal seputar makeup, memasak, desain, dan dunia digital. Di web ini saya berbagi berbagai inspirasi dari Pinterest moodboard, mulai dari ide makeup, outfit, sampai resep makanan, serta berbagai link produk yang saya gunakan atau saya sukai.",
+
+about_text2: "Saya adalah mahasiswi Teknik Informatika di Universitas Jabal Ghafur, Pidie, Aceh. Saya sedang belajar dan mengembangkan keterampilan di bidang teknologi, khususnya web dan desain, sambil tetap menyalurkan hobi saya di dunia memasak. Di sini juga saya menampilkan beberapa project yang saya kerjakan sebagai bentuk latihan dan pengembangan diri. Web ini menjadi tempat saya menuangkan ide, inspirasi, dan hasil karya saya.",
+                about_location: "📍 Aceh, Indonesia ",
+                about_education_label: "Pendidikan:", about_education: "Universitas Jabal Ghafur",
+                about_hobbies_label: "Hobi:", about_hobbies: "Memasak & Makeup",
+                about_hashtag: "#FutureTechGirl",
+                skills_title: "My Expertise",
+                favorites_title: "❤️ My Favorites",
+                hobby_cook: "Memasak", hobby_cook_desc: "Klik untuk lihat resep",
+                hobby_makeup: "Makeup", hobby_makeup_desc: "Klik untuk buka link produk",
+                pinterest_title: "🎨 Pinterest Inspo",
+                outfit_title: "Outfit", makeup_title: "Makeup", foodie_title: "Foodie",
+                view_more: "Lihat semua →",
+                projects_title: "🚀 Proyek Saya",
+                contact_title: "📞 Hubungi Saya",
+            },
+            en: {
+                hero_badge: "🌸 Informatics Engineering Student",
+                hero_tagline: "Blending tech and creativity.",
+                about_title: "🌸 About Me",
+                about_text1: "Hello, I'm Yasmin Thahirah. I love exploring things about makeup, cooking, design, and the digital world. On this website, I share various inspirations from Pinterest moodboards, from makeup ideas, outfits, to food recipes, as well as various product links that I use or like.",
+
+about_text2: "I am an Informatics Engineering student at Jabal Ghafur University, Pidie, Aceh. I am learning and developing skills in technology, especially web and design, while still channeling my hobby in cooking. Here I also display several projects that I work on as a form of practice and self-development. This website is a place for me to pour out my ideas, inspirations, and works.",
+                about_location: "📍 Aceh, Indonesia ",
+                about_education_label: "Education:", about_education: "Universitas Jabal Ghafur",
+                about_hobbies_label: "Hobbies:", about_hobbies: "Cooking & Makeup",
+                about_hashtag: "#FutureTechGirl",
+                skills_title: "My Expertise",
+                favorites_title: "❤️ My Favorites",
+                hobby_cook: "Cooking", hobby_cook_desc: "Click to see recipes",
+                hobby_makeup: "Makeup", hobby_makeup_desc: "Click to open products links",
+                pinterest_title: "🎨 Pinterest Inspo",
+                outfit_title: "Outfit", makeup_title: "Makeup", foodie_title: "Foodie",
+                view_more: "View all →",
+                projects_title: "🚀 My Project",
+                contact_title: "📞 Let's Connect",
+            }
+        };
+
+        let currentLang = 'id';
+        function updateLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+            });
+            document.getElementById('langLabel').innerText = currentLang === 'id' ? 'EN' : 'ID';
+            renderSkills();
+        }
+        document.getElementById('langToggleBtn').addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            updateLanguage();
+        });
+
+        // SKILLS
+        const skillsArray = [
+            { nameId: "Memasak", nameEn: "Cooking", icon: "fas fa-utensils" },
+            { nameId: "Makeup", nameEn: "Makeup", icon: "fas fa-paint-brush" },
+            { nameId: "Editing Video & Foto", nameEn: "Video & Photo Editing", icon: "fas fa-video" },
+            { nameId: "Dasar Komputer", nameEn: "Basic Computer", icon: "fas fa-laptop-code" },
+            { nameId: "Keterampilan Internet", nameEn: "Internet Skills", icon: "fas fa-globe" }
+        ];
+        function renderSkills() {
+            const container = document.getElementById('skillsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            skillsArray.forEach(skill => {
+                const skillName = currentLang === 'id' ? skill.nameId : skill.nameEn;
+                container.innerHTML += `<div class="skill-card-modern"><div class="skill-icon"><i class="${skill.icon}"></i></div><div class="skill-name">${skillName}</div></div>`;
+            });
+        }
+
+        // PROJECT
+        const projectData = { title: "JalanYuk", desc: "Website transportasi online untuk membantu pengguna mencari layanan perjalanan dengan mudah.", tech: "HTML, CSS, JavaScript", link: "https://yasminthahirah79-jpg.github.io/jalanyukk/" };
+        function renderProject() {
+            const wrapper = document.getElementById('projectCardWrapper');
+            if (!wrapper) return;
+            wrapper.innerHTML = `<div class="project-card" id="singleProjectCard"><div class="project-img"><i class="fas fa-bus-alt"></i></div><div class="project-info"><h3 class="project-title">${projectData.title}</h3><p>${projectData.desc}</p><span class="project-tech">🛠️ ${projectData.tech}</span></div></div>`;
+            document.getElementById('singleProjectCard')?.addEventListener('click', () => window.open(projectData.link, '_blank'));
+        }
+
+        // ========== GANTI FOTO RESEP & PRODUK DI SINI ==========
+        // Ganti img dengan nama file foto Anda atau URL gambar dari internet
+        const recipes = [
+    { img: "ayam_lada_hitam.jpg", name: "Ayam Lada Hitam" },
+    { img: "ayam_crispy_asam_manis.jpg", name: "Ayam Crispy Asam Manis" },
+    { img: "ayam_daun_jeruk.jpg", name: "Ayam Pedas Daun Jeruk" },
+    { img: "sambal_cumi_pete.jpg", name: "Sambal Cumi Pete" },
+    { img: "sambal_tempe_kemangi.jpg", name: "Sambal Tempe Kemangi" },
+    { img: "udang_saus_padang.jpg", name: "Udang Saus Padang" },
+    { img: "sop_sayur_bakso.jpg", name: "Sop Sayur Bakso" },
+    { img: "cireng_sambal_rujak.jpg", name: "Cireng Sambal Rujak" }
+];
+
+        // Ganti img dengan URL gambar produk, dan link dengan URL toko
+        const makeupProducts = [
+            { img: "cushion.jpg", name: "Cushion", link: "https://s.shopee.co.id/2g7JFRNW1w" },
+            { img: "bedak.jpg", name: "Loose Powder", link: "https://s.shopee.co.id/BPyGsxJJL" },
+            { img: "eyeshadow.jpg", name: "Eyeshadow", link: "https://s.shopee.co.id/7VCZ33G2jv" },
+            { img: "liptint.jpg", name: "Lip Tint", link: "https://s.shopee.co.id/1qYCG0G9US" },
+            { img: "lipgloss.jpg", name: "Lip Gloss", link: "https://s.shopee.co.id/70GIPTWHZL" },
+            { img: "lipvnyl.jpg", name: "Liquid Lip", link: "https://s.shopee.co.id/6pwsDIkwNI" },
+            { img: "liquid blush.jpg", name: "Liquid Blush", link: "https://s.shopee.co.id/4LFXElNMAL" },
+            { img: "setting spray.jpg", name: "Setting Spray", link: "https://s.shopee.co.id/901MnJjzpD" },
+            { img: "eyebrow gel.jpg", name: "Eyebrow Gel", link: "https://s.shopee.co.id/gMEs6iZmQ" },
+            { img: "mascara.jpg", name: "Mascara", link: "https://s.shopee.co.id/2qQjS2bg2a" }
+        ];
+
+        // ========== LIGHTBOX UNTUK MEMPERBESAR GAMBAR ==========
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // ========== MODAL UNTUK RESEP & PRODUK ==========
+        function showRecipeModal() {
+            let html = `<h2 class="section-title">${currentLang === 'id' ? '🍳 Koleksi Resep Masakan' : '🍳 Recipe Collection'}</h2><div class="recipe-grid">`;
+            recipes.forEach(recipe => {
+                html += `<div class="recipe-card" onclick="openLightbox('${recipe.img}')">
+                            <img class="recipe-img" src="${recipe.img}" alt="${recipe.name}">
+                            <p>${recipe.name}</p>
+                         </div>`;
+            });
+            html += `</div>`;
+            openModal(html);
+        }
+
+        function showMakeupModal() {
+            let html = `<h2 class="section-title">${currentLang === 'id' ? '💄 Koleksi Produk Makeup' : '💄 Makeup Collection'}</h2><div class="makeup-grid">`;
+            makeupProducts.forEach(product => {
+                html += `<div class="product-card" onclick="window.open('${product.link}', '_blank')">
+                            <img class="product-img" src="${product.img}" alt="${product.name}" onclick="event.stopPropagation(); openLightbox('${product.img}')">
+                            <p>${product.name}</p>
+                         </div>`;
+            });
+            html += `</div>`;
+            openModal(html);
+        }
+
+        // MODAL UMUM
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalInner = document.getElementById('modalInner');
+        function closeModal() { modalOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        function openModal(content) { modalInner.innerHTML = content; modalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        document.getElementById('modalClose').onclick = closeModal;
+        modalOverlay.onclick = (e) => { if (e.target === modalOverlay) closeModal(); };
+
+        // EVENT CLICK UNTUK FAVORIT
+        document.getElementById('cookingBtn').onclick = showRecipeModal;
+        document.getElementById('makeupBtn').onclick = showMakeupModal;
+
+        // NAVBAR MODAL UNTUK MENU LAIN
+        function getSkillsModal() {
+            let html = '<h2 class="section-title">⚡ ' + (currentLang === 'id' ? 'Keahlian Saya' : 'My Skills') + '</h2><div class="skills-grid" id="modalSkillsGrid"></div>';
+            setTimeout(() => {
+                const cont = document.getElementById('modalSkillsGrid');
+                if (cont) {
+                    cont.innerHTML = '';
+                    skillsArray.forEach(s => {
+                        const name = currentLang === 'id' ? s.nameId : s.nameEn;
+                        cont.innerHTML += `<div class="skill-card-modern"><div class="skill-icon"><i class="${s.icon}"></i></div><div class="skill-name">${name}</div></div>`;
+                    });
+                }
+            }, 10);
+            return html;
+        }
+
+        // ========== MODAL TENTANG (SUDAH DIPERBARUI) ==========
+        document.getElementById('nav-about').onclick = () => { openModal(`<h2 class="section-title">🌸 ${currentLang === 'id' ? 'Tentang Saya' : 'About Me'}</h2><div class="glass-card"><div class="about-grid"><div class="about-text"><p>${currentLang === 'id' ? 'Halo, saya Yasmin Thahirah. Saya suka mengeksplor hal-hal seputar makeup, memasak, desain, dan dunia digital. Di web ini saya berbagi berbagai inspirasi dari Pinterest moodboard, mulai dari ide makeup, outfit, sampai resep makanan, serta berbagai link produk yang saya gunakan atau saya sukai.' : 'Hello, I\'m Yasmin Thahirah. I love exploring things about makeup, cooking, design, and the digital world. On this website, I share various inspirations from Pinterest moodboards, from makeup ideas, outfits, to food recipes, as well as various product links that I use or like.'}</p><p style="margin-top:1rem">${currentLang === 'id' ? 'Saya adalah mahasiswi Teknik Informatika di Universitas Jabal Ghafur, Pidie, Aceh. Saya sedang belajar dan mengembangkan keterampilan di bidang teknologi, khususnya web dan desain, sambil tetap menyalurkan hobi saya di dunia memasak. Di sini juga saya menampilkan beberapa project yang saya kerjakan sebagai bentuk latihan dan pengembangan diri. Web ini menjadi tempat saya menuangkan ide, inspirasi, dan hasil karya saya.' : 'I am an Informatics Engineering student at Jabal Ghafur University, Pidie, Aceh. I am learning and developing skills in technology, especially web and design, while still channeling my hobby in cooking. Here I also display several projects that I work on as a form of practice and self-development. This website is a place for me to pour out my ideas, inspirations, and works.'}</p><p style="margin-top:1rem">📍 Aceh, Indonesia</p></div><div class="about-info"><p><i class="fas fa-graduation-cap" style="color:#b87c4f;"></i> <strong> Perjalanan Pendidikan</strong></p><div style="margin-left: 0.5rem; margin-top: 0.5rem;"><div style="margin-bottom: 0.6rem;">📘 <strong>SDU Iqro\' Sigli</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2012 - 2018</span></div><div style="margin-bottom: 0.6rem;">📘 <strong>SMPU Iqro\' Sigli</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2018 - 2021</span></div><div style="margin-bottom: 0.6rem;">📘 <strong>SMA DAR MARYAM Samahani</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2021 - 2024</span></div><div>📘 <strong>Universitas Jabal Ghafur (UNIGHA)</strong><br><span style="font-size: 0.7rem; opacity: 0.8;">2024 - sekarang</span><br><span style="font-size: 0.65rem; opacity: 0.7;">Mahasiswi Teknik Informatika</span></div></div></div></div></div>`); };
+        document.getElementById('nav-skills').onclick = () => { openModal(getSkillsModal()); };
+        document.getElementById('nav-favorites').onclick = () => { 
+            let favHtml = `<h2 class="section-title">❤️ ${currentLang === 'id' ? 'My Favorites' : 'My Favorites'}</h2><div class="hobbies-flex" style="flex-direction:column; gap:1rem;"><div class="hobby-bubble" id="modalCookingBtn" style="cursor:pointer"><i class="fas fa-utensils"></i><h3>🍳 ${currentLang === 'id' ? 'Memasak' : 'Cooking'}</h3><p>${currentLang === 'id' ? 'Klik untuk lihat resep' : 'Click to see recipes'}</p></div><div class="hobby-bubble" id="modalMakeupBtn" style="cursor:pointer"><i class="fas fa-paint-brush"></i><h3>💄 ${currentLang === 'id' ? 'Makeup' : 'Makeup'}</h3><p>${currentLang === 'id' ? 'Klik untuk lihat produk' : 'Click to see products'}</p></div></div>`;
+            openModal(favHtml);
+            setTimeout(() => {
+                const modalCook = document.getElementById('modalCookingBtn');
+                const modalMake = document.getElementById('modalMakeupBtn');
+                if (modalCook) modalCook.onclick = () => { closeModal(); setTimeout(showRecipeModal, 100); };
+                if (modalMake) modalMake.onclick = () => { closeModal(); setTimeout(showMakeupModal, 100); };
+            }, 50);
+        };
+        document.getElementById('nav-projects').onclick = () => { openModal(`<h2 class="section-title">🚀 ${currentLang === 'id' ? 'Proyek Saya' : 'Featured Project'}</h2><div class="project-card" id="modalProjectCard" style="cursor:pointer"><div class="project-img"><i class="fas fa-bus-alt"></i></div><div class="project-info"><h3 class="project-title">${projectData.title}</h3><p>${projectData.desc}</p><span class="project-tech">🛠️ ${projectData.tech}</span></div></div>`); setTimeout(() => { const pc = document.getElementById('modalProjectCard'); if(pc) pc.onclick = () => window.open(projectData.link, '_blank'); }, 50); };
+        document.getElementById('nav-contact').onclick = () => { openModal(`<h2 class="section-title">📞 ${currentLang === 'id' ? 'Hubungi Saya' : 'Contact Me'}</h2><div class="contact-links"><a href="https://www.instagram.com/yasminthrh" target="_blank" class="contact-bubble"><i class="fab fa-instagram"></i> Instagram</a><a href="https://wa.me/6282268415784" target="_blank" class="contact-bubble"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="mailto:yasminthahirah79@gmail.com" class="contact-bubble"><i class="fas fa-envelope"></i> Email</a></div>`); };
+        document.getElementById('nav-home').onclick = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+        // DARK MODE
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeLabelSpan = document.getElementById('themeLabel');
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('light');
+                document.body.classList.remove('dark');
+                themeLabelSpan.innerText = 'Dark';
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>';
+            } else {
+                document.body.classList.remove('light');
+                document.body.classList.add('dark');
+                themeLabelSpan.innerText = 'Light';
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>';
+            }
+        }
+        themeBtn.addEventListener('click', () => setTheme(document.body.classList.contains('dark') ? 'light' : 'dark'));
+        setTheme('dark');
+
+        renderSkills();
+        renderProject();
+        updateLanguage();
+    </script>
+</body>
+</html>
