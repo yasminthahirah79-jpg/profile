@@ -774,13 +774,33 @@ about_text2: "I am an Informatics Engineering student at Jabal Ghafur University
             });
         }
 
-        // PROJECT
-        const projectData = { title: "JalanYuk", desc: "Website transportasi online untuk membantu pengguna mencari layanan perjalanan dengan mudah.", tech: "HTML, CSS, JavaScript", link: "https://yasminthahirah79-jpg.github.io/jalanyukk/" };
+        // PROJECTS (DUA PROYEK)
+        const projectData1 = { title: "JalanYuk", desc: "Website transportasi online untuk membantu pengguna mencari layanan perjalanan dengan mudah.", tech: "HTML, CSS, JavaScript", link: "https://yasminthahirah79-jpg.github.io/jalanyukk/" };
+        const projectData2 = { title: "Emergency Response", desc: "Website Guardian Response sistem tanggap darurat.", tech: "HTML, CSS, JavaScript", link: "https://yasminthahirah79-jpg.github.io/emergencyrespone/" };
+        
         function renderProject() {
             const wrapper = document.getElementById('projectCardWrapper');
             if (!wrapper) return;
-            wrapper.innerHTML = `<div class="project-card" id="singleProjectCard"><div class="project-img"><i class="fas fa-bus-alt"></i></div><div class="project-info"><h3 class="project-title">${projectData.title}</h3><p>${projectData.desc}</p><span class="project-tech">🛠️ ${projectData.tech}</span></div></div>`;
-            document.getElementById('singleProjectCard')?.addEventListener('click', () => window.open(projectData.link, '_blank'));
+            wrapper.innerHTML = `
+                <div class="project-card" id="singleProjectCard1" style="margin-bottom: 1.5rem;">
+                    <div class="project-img"><i class="fas fa-bus-alt"></i></div>
+                    <div class="project-info">
+                        <h3 class="project-title">${projectData1.title}</h3>
+                        <p>${projectData1.desc}</p>
+                        <span class="project-tech">🛠️ ${projectData1.tech}</span>
+                    </div>
+                </div>
+                <div class="project-card" id="singleProjectCard2">
+                    <div class="project-img"><i class="fas fa-ambulance"></i></div>
+                    <div class="project-info">
+                        <h3 class="project-title">${projectData2.title}</h3>
+                        <p>${projectData2.desc}</p>
+                        <span class="project-tech">🛠️ ${projectData2.tech}</span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('singleProjectCard1')?.addEventListener('click', () => window.open(projectData1.link, '_blank'));
+            document.getElementById('singleProjectCard2')?.addEventListener('click', () => window.open(projectData2.link, '_blank'));
         }
 
         // ========== GANTI FOTO RESEP & PRODUK DI SINI ==========
@@ -897,7 +917,14 @@ about_text2: "I am an Informatics Engineering student at Jabal Ghafur University
                 if (modalMake) modalMake.onclick = () => { closeModal(); setTimeout(showMakeupModal, 100); };
             }, 50);
         };
-        document.getElementById('nav-projects').onclick = () => { openModal(`<h2 class="section-title">🚀 ${currentLang === 'id' ? 'Proyek Saya' : 'Featured Project'}</h2><div class="project-card" id="modalProjectCard" style="cursor:pointer"><div class="project-img"><i class="fas fa-bus-alt"></i></div><div class="project-info"><h3 class="project-title">${projectData.title}</h3><p>${projectData.desc}</p><span class="project-tech">🛠️ ${projectData.tech}</span></div></div>`); setTimeout(() => { const pc = document.getElementById('modalProjectCard'); if(pc) pc.onclick = () => window.open(projectData.link, '_blank'); }, 50); };
+        document.getElementById('nav-projects').onclick = () => { openModal(`<h2 class="section-title">🚀 ${currentLang === 'id' ? 'Proyek Saya' : 'My Projects'}</h2><div class="project-card" id="modalProjectCard1" style="cursor:pointer; margin-bottom: 1rem;"><div class="project-img"><i class="fas fa-bus-alt"></i></div><div class="project-info"><h3 class="project-title">${projectData1.title}</h3><p>${projectData1.desc}</p><span class="project-tech">🛠️ ${projectData1.tech}</span></div></div><div class="project-card" id="modalProjectCard2" style="cursor:pointer;"><div class="project-img"><i class="fas fa-ambulance"></i></div><div class="project-info"><h3 class="project-title">${projectData2.title}</h3><p>${projectData2.desc}</p><span class="project-tech">🛠️ ${projectData2.tech}</span></div></div>`); 
+            setTimeout(() => { 
+                const pc1 = document.getElementById('modalProjectCard1'); 
+                const pc2 = document.getElementById('modalProjectCard2'); 
+                if(pc1) pc1.onclick = () => window.open(projectData1.link, '_blank'); 
+                if(pc2) pc2.onclick = () => window.open(projectData2.link, '_blank'); 
+            }, 50); 
+        };
         document.getElementById('nav-contact').onclick = () => { openModal(`<h2 class="section-title">📞 ${currentLang === 'id' ? 'Hubungi Saya' : 'Contact Me'}</h2><div class="contact-links"><a href="https://www.instagram.com/yasminthrh" target="_blank" class="contact-bubble"><i class="fab fa-instagram"></i> Instagram</a><a href="https://wa.me/6282268415784" target="_blank" class="contact-bubble"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="mailto:yasminthahirah79@gmail.com" class="contact-bubble"><i class="fas fa-envelope"></i> Email</a></div>`); };
         document.getElementById('nav-home').onclick = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
