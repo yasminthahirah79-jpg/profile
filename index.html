@@ -408,7 +408,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -701,7 +701,7 @@
         <div class="container">
             <h2 class="section-title" data-key="projects_title">Featured Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1: JalanYukk (TETAP) -->
+                <!-- Project 1: JalanYukk -->
                 <div class="project-card">
                     <div class="project-img"><i class="fas fa-bus-alt"></i></div>
                     <div class="project-content">
@@ -716,7 +716,7 @@
                         <a href="https://yasminthahirah79-jpg.github.io/jalanyukk/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
                     </div>
                 </div>
-                <!-- Project 2: Yummylicious (DIGANTI) -->
+                <!-- Project 2: Yummylicious -->
                 <div class="project-card">
                     <div class="project-img"><i class="fas fa-utensils"></i></div>
                     <div class="project-content">
@@ -729,6 +729,21 @@
                             <li><i class="fas fa-check-circle"></i> HTML, CSS, JavaScript</li>
                         </ul>
                         <a href="https://yasminthahirah79-jpg.github.io/yummylicious/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
+                    </div>
+                </div>
+                <!-- Project 3: Reseller System (TAMBAHAN BARU) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-store"></i></div>
+                    <div class="project-content">
+                        <span class="project-tag" data-key="project3_tag">WEB DEVELOPMENT</span>
+                        <h3>Reseller System</h3>
+                        <p data-key="project3_desc">Platform sistem reseller modern yang memudahkan pengelolaan produk, stok, dan transaksi untuk bisnis ritel maupun online.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> Manajemen Stok & Produk</li>
+                            <li><i class="fas fa-check-circle"></i> Sistem Order Terintegrasi</li>
+                            <li><i class="fas fa-check-circle"></i> Dashboard Reseller</li>
+                        </ul>
+                        <a href="https://yasminthahirah79-jpg.github.io/reseller-system/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -837,6 +852,7 @@
                 projects_title: "Proyek Saya", view_project: "View Project →",
                 project1_tag: "WEB DEVELOPMENT", project1_desc: "Website transportasi online yang membantu pengguna mencari layanan perjalanan dengan mudah melalui tampilan sederhana dan user‑friendly.",
                 project2_tag: "WEB DEVELOPMENT", project2_desc: "Website pemesanan makanan yang fleksibel—bisa diantar langsung ke tempatmu atau diambil sendiri. Menu disiapkan dari bahan segar dengan cita rasa konsisten.",
+                project3_tag: "WEB DEVELOPMENT", project3_desc: "Platform sistem reseller modern yang memudahkan pengelolaan produk, stok, dan transaksi untuk bisnis ritel maupun online.",
                 picks_title: "Pilihanku", picks_recipes: "🍳 Resep Makanan", picks_recipes_desc: "Koleksi resep masakan rumahan", view_recipes: "Lihat Resep →", picks_beauty: "💄 Beauty Products", picks_beauty_desc: "Produk makeup yang aku pakai sehari-hari", view_products: "Lihat Produk →",
                 contact_title: "Mari Terhubung", contact_instagram: "Instagram", contact_whatsapp: "WhatsApp", contact_email: "Email"
             },
@@ -853,6 +869,7 @@
                 projects_title: "My Projects", view_project: "View Project →",
                 project1_tag: "WEB DEVELOPMENT", project1_desc: "Online transportation website that helps users find travel services easily with a simple and user-friendly interface.",
                 project2_tag: "WEB DEVELOPMENT", project2_desc: "Flexible food ordering website—can be delivered or picked up. Menu prepared with fresh ingredients and consistent taste.",
+                project3_tag: "WEB DEVELOPMENT", project3_desc: "Modern reseller system platform that simplifies product, stock, and transaction management for retail and online businesses.",
                 picks_title: "My Picks", picks_recipes: "🍳 Food Recipes", picks_recipes_desc: "Collection of home cooking recipes", view_recipes: "View Recipes →", picks_beauty: "💄 Beauty Products", picks_beauty_desc: "Makeup products I use daily", view_products: "View Products →",
                 contact_title: "Let's Connect", contact_instagram: "Instagram", contact_whatsapp: "WhatsApp", contact_email: "Email"
             }
@@ -868,9 +885,13 @@
                 }
             });
             // Update project description specifically
-            const projDesc = document.querySelector('#projects .project-card:last-child .project-content p');
-            if (projDesc && translations[currentLang].project2_desc) {
-                projDesc.innerText = translations[currentLang].project2_desc;
+            const projDesc2 = document.querySelector('#projects .project-card:nth-child(2) .project-content p');
+            if (projDesc2 && translations[currentLang].project2_desc) {
+                projDesc2.innerText = translations[currentLang].project2_desc;
+            }
+            const projDesc3 = document.querySelector('#projects .project-card:nth-child(3) .project-content p');
+            if (projDesc3 && translations[currentLang].project3_desc) {
+                projDesc3.innerText = translations[currentLang].project3_desc;
             }
         }
         document.getElementById('langToggle').addEventListener('click', () => {
