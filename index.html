@@ -408,7 +408,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -447,6 +447,14 @@
             cursor: pointer;
         }
         .project-btn:hover { background: var(--soft-pink-hover); gap: 12px; }
+
+        @media (max-width: 992px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid { grid-template-columns: 1fr; }
+        }
 
         .picks-grid {
             display: grid;
@@ -731,7 +739,7 @@
                         <a href="https://yasminthahirah79-jpg.github.io/yummylicious/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
                     </div>
                 </div>
-                <!-- Project 3: Reseller System (TAMBAHAN BARU) -->
+                <!-- Project 3: Reseller System -->
                 <div class="project-card">
                     <div class="project-img"><i class="fas fa-store"></i></div>
                     <div class="project-content">
@@ -744,6 +752,21 @@
                             <li><i class="fas fa-check-circle"></i> Dashboard Reseller</li>
                         </ul>
                         <a href="https://yasminthahirah79-jpg.github.io/reseller-system/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
+                    </div>
+                </div>
+                <!-- Project 4: Final RPL (BARU) -->
+                <div class="project-card">
+                    <div class="project-img"><i class="fas fa-file-code"></i></div>
+                    <div class="project-content">
+                        <span class="project-tag" data-key="project4_tag">FINAL PROJECT</span>
+                        <h3>Final RPL</h3>
+                        <p data-key="project4_desc">Proyek final Rekayasa Perangkat Lunak yang mengimplementasikan konsep pengembangan sistem secara terstruktur dan terdokumentasi.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check-circle"></i> Dokumentasi Lengkap</li>
+                            <li><i class="fas fa-check-circle"></i> Metodologi Terstruktur</li>
+                            <li><i class="fas fa-check-circle"></i> Pengembangan Sistem</li>
+                        </ul>
+                        <a href="https://s3r3.github.io/final-rpl/" target="_blank" class="project-btn" data-key="view_project">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -853,6 +876,7 @@
                 project1_tag: "WEB DEVELOPMENT", project1_desc: "Website transportasi online yang membantu pengguna mencari layanan perjalanan dengan mudah melalui tampilan sederhana dan user‑friendly.",
                 project2_tag: "WEB DEVELOPMENT", project2_desc: "Website pemesanan makanan yang fleksibel—bisa diantar langsung ke tempatmu atau diambil sendiri. Menu disiapkan dari bahan segar dengan cita rasa konsisten.",
                 project3_tag: "WEB DEVELOPMENT", project3_desc: "Platform sistem reseller modern yang memudahkan pengelolaan produk, stok, dan transaksi untuk bisnis ritel maupun online.",
+                project4_tag: "FINAL PROJECT", project4_desc: "Proyek final Rekayasa Perangkat Lunak yang mengimplementasikan konsep pengembangan sistem secara terstruktur dan terdokumentasi.",
                 picks_title: "Pilihanku", picks_recipes: "🍳 Resep Makanan", picks_recipes_desc: "Koleksi resep masakan rumahan", view_recipes: "Lihat Resep →", picks_beauty: "💄 Beauty Products", picks_beauty_desc: "Produk makeup yang aku pakai sehari-hari", view_products: "Lihat Produk →",
                 contact_title: "Mari Terhubung", contact_instagram: "Instagram", contact_whatsapp: "WhatsApp", contact_email: "Email"
             },
@@ -870,6 +894,7 @@
                 project1_tag: "WEB DEVELOPMENT", project1_desc: "Online transportation website that helps users find travel services easily with a simple and user-friendly interface.",
                 project2_tag: "WEB DEVELOPMENT", project2_desc: "Flexible food ordering website—can be delivered or picked up. Menu prepared with fresh ingredients and consistent taste.",
                 project3_tag: "WEB DEVELOPMENT", project3_desc: "Modern reseller system platform that simplifies product, stock, and transaction management for retail and online businesses.",
+                project4_tag: "FINAL PROJECT", project4_desc: "Final Software Engineering project that implements structured and documented system development concepts.",
                 picks_title: "My Picks", picks_recipes: "🍳 Food Recipes", picks_recipes_desc: "Collection of home cooking recipes", view_recipes: "View Recipes →", picks_beauty: "💄 Beauty Products", picks_beauty_desc: "Makeup products I use daily", view_products: "View Products →",
                 contact_title: "Let's Connect", contact_instagram: "Instagram", contact_whatsapp: "WhatsApp", contact_email: "Email"
             }
@@ -892,6 +917,10 @@
             const projDesc3 = document.querySelector('#projects .project-card:nth-child(3) .project-content p');
             if (projDesc3 && translations[currentLang].project3_desc) {
                 projDesc3.innerText = translations[currentLang].project3_desc;
+            }
+            const projDesc4 = document.querySelector('#projects .project-card:nth-child(4) .project-content p');
+            if (projDesc4 && translations[currentLang].project4_desc) {
+                projDesc4.innerText = translations[currentLang].project4_desc;
             }
         }
         document.getElementById('langToggle').addEventListener('click', () => {
